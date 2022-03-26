@@ -1,85 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
 
 type RatingPropsType = {
     value: 0 | 1 | 2 | 3 | 4 | 5
 }
 
 export function Rating(props: RatingPropsType) {
-    console.log('Rating rendering')
-    if (props.value === 1) {
-        return (
-            <div>
-                <Star selected={true}/>
-                <Star selected={false}/>
-                <Star selected={false}/>
-                <Star selected={false}/>
-                <Star selected={false}/>
-            </div>
-        );
-    }
-    if (props.value === 2) {
-        return (
-            <div>
-                <Star selected={true}/>
-                <Star selected={true}/>
-                <Star selected={false}/>
-                <Star selected={false}/>
-                <Star selected={false}/>
-            </div>
-        );
-    }
-    if (props.value === 3) {
-        return (
-            <div>
-                <Star selected={true}/>
-                <Star selected={true}/>
-                <Star selected={true}/>
-                <Star selected={false}/>
-                <Star selected={false}/>
-            </div>
-        );
-    }
-    if (props.value === 4) {
-        return (
-            <div>
-                <Star selected={true}/>
-                <Star selected={true}/>
-                <Star selected={true}/>
-                <Star selected={true}/>
-                <Star selected={false}/>
-            </div>
-        );
-    }
-    if (props.value === 5) {
-        return (
-            <div>
-                <Star selected={true}/>
-                <Star selected={true}/>
-                <Star selected={true}/>
-                <Star selected={true}/>
-                <Star selected={true}/>
-            </div>
-        );
-    }
-    return (
-        <div>
-            <Star selected={false}/>
-            <Star selected={false}/>
-            <Star selected={false}/>
-            <Star selected={false}/>
-            <Star selected={false}/>
-        </div>
-    );
-}
 
+    const [rank, setRank] = useState<0 | 1 | 2 | 3 | 4 | 5>(0)
+
+    console.log('Rating rendering')
+        return (
+            <div>
+                <Star selected={rank > 0} select={() => setRank(1)}/>
+                <Star selected={rank > 1} select={() => setRank(2)}/>
+                <Star selected={rank > 2} select={() => setRank(3)}/>
+                <Star selected={rank > 3} select={() => setRank(4)}/>
+                <Star selected={rank > 4} select={() => setRank(5)}/>
+            </div>
+        );
+    }
 type StarPropsType = {
     selected: boolean
+    select: () => void
 }
 
 function Star(props: StarPropsType) {
-    if (props.selected === true) {
-        return <span><b>star</b> </span>
-    } else {
-        return <span>star </span>
-    }
+    return <span onClick={props.select}>{ props.selected ? <b>star </b> : 'star '}</span>
 }

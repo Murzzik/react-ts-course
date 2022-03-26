@@ -12,15 +12,9 @@ function App() {
     return (
         <div className="App">
             <PageTitle title={'This is APP component'}/>
-            <Rating value={3}/>
-            <Accordion title={'Menu'} value={12} value1={23} collapsed ={true}/>
-            <Accordion title={'Users'} value={15} value1 ={45} collapsed ={false}/>
+            <Accordion title={'Menu'} />
+            <Accordion title={'Users'} />
             <Rating value={0}/>
-            <Rating value={1}/>
-            <Rating value={2}/>
-            <Rating value={3}/>
-            <Rating value={4}/>
-            <Rating value={5}/>
         </div>
     );
 }
